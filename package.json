@@ -12,10 +12,11 @@
   "license": "ISC",
   "type": "commonjs",
   "module": "cors",
-  
   "dependencies": {
     "cors": "^2.8.6",
-    "express": "^5.2.1"
+    "express": "^5.2.1",
+    "helmet": "^8.3.0",
+    "joi": "^18.3.2"
   },
   "devDependencies": {
     "dotenv": "^18.0.4",
