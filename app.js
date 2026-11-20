@@ -53,29 +53,26 @@ app.get('/todos/completed', async (req, res, next) => {
  }
 });
 
-/*app.get('./todos/search', async (req, res, next) => {
+app.get('/todos/search', async (req, res, next) => {
   try{
-    const { completed } = req.query;
+    const { completedTodo } = req.query;
 
-    if (completed !== 'true' && completed !== 'false') {
+    if (completedTodo !== 'true' && completedTodo !== 'false') {
       return res.status(400).json({
         message: 'Please provide completed=true or completed=false'
       });
     }
 
-    const search = todos.filter(
-      (t) => String(t.completed) === completed
-    );
+    const search = await todos.filter((t) => t.completedTodo === completedTodo);
 
     return res.status(200).json({
       message: 'Search successful',
-      data: search
     });
 
-  } catch (error) {
+  } catch(error) {
     next(error);
   };
-});*/
+});
 
 app.get('/todos/:id', async (req, res, next) => {
  try {
