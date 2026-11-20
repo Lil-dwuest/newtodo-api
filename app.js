@@ -34,6 +34,10 @@ app.get('/', (req, res) => {
 
 app.get('/todos', async (req, res, next) => {
  const todos = await Todo.find({});
+
+  console.log('Database:', mongoose.connection.name);
+  console.log('Todos found:', todos.length);
+  npm
  res.status(200).json(todos);
 });
 
@@ -52,7 +56,7 @@ app.get('./todos/completed', async (req, res, next) => {
  }
 });
 
-app.get('./todos/search', async (req, res, next) => {
+/*app.get('./todos/search', async (req, res, next) => {
   try{
     const { completed } = req.query;
 
@@ -74,7 +78,7 @@ app.get('./todos/search', async (req, res, next) => {
   } catch (error) {
     next(error);
   };
-});
+});*/
 
 app.get('/todos/:id', async (req, res, next) => {
  try {
