@@ -44,7 +44,7 @@ app.get('/todos/active', (req, res, next) => {
  res.status(200).json(activeTodos);
 });
 
-app.get('./todos/completed', async (req, res, next) => {
+app.get('/todos/completed', async (req, res, next) => {
  try{
   const completed = await todos.filter((t) => t.completed);
   res.json(completed); //Custom Read!
