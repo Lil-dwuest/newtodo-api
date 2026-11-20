@@ -52,6 +52,30 @@ app.get('./todos/completed', async (req, res, next) => {
  }
 });
 
+app.get('./todos/search', async (req, res, next) => {
+  try{
+    const { completed } = req.query;
+
+    if (completed !== 'true' && completed !== 'false') {
+      return res.status(400).json({
+        message: 'Please provide completed=true or completed=false'
+      });
+    }
+
+    const search = todos.filter(
+      (t) => String(t.completed) === completed
+    );
+
+    return res.status(200).json({
+      message: 'Search successful',
+      data: search
+    });
+
+  } catch (error) {
+    next(error);
+  };
+});
+
 app.get('/todos/:id', async (req, res, next) => {
  try {
   
