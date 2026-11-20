@@ -35,9 +35,6 @@ app.get('/', (req, res) => {
 app.get('/todos', async (req, res, next) => {
  const todos = await Todo.find({});
 
-  console.log('Database:', mongoose.connection.name);
-  console.log('Todos found:', todos.length);
-  npm
  res.status(200).json(todos);
 });
 
